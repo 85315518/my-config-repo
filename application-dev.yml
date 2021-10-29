@@ -1,12 +1,18 @@
 server:
   tomcat:
     uri-encoding: UTF-8
-    remote-ip-header: x-forwarded-for
-  use-forward-headers: true
+    remoteip:
+      remote-ip-header: x-forwarded-for
+  forward-headers-strategy: NATIVE
 
 management:
-  security:
-    enabled: false
+  endpoint:
+    health:
+      show-details: ALWAYS
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 spring:
   aop:
